@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { randomWord } from "./words";
 import "./Hangman.css";
-import img0 from "./0.jpg";
-import img1 from "./1.jpg";
-import img2 from "./2.jpg";
-import img3 from "./3.jpg";
-import img4 from "./4.jpg";
-import img5 from "./5.jpg";
-import img6 from "./6.jpg";
+import img0 from "./assets/0.jpg";
+import img1 from "./assets/1.jpg";
+import img2 from "./assets/2.jpg";
+import img3 from "./assets/3.jpg";
+import img4 from "./assets/4.jpg";
+import img5 from "./assets/5.jpg";
+import img6 from "./assets/6.jpg";
 
 class Hangman extends Component {
   /** by default, allow 6 guesses and use provided gallows images. */
@@ -52,6 +52,7 @@ class Hangman extends Component {
   }
 
   /** generateButtons: return array of letter buttons to render */
+  // each key is a letter, so it works fine. "i" would work as well
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map(ltr => (
       <button
@@ -77,13 +78,13 @@ class Hangman extends Component {
       <div className='Hangman'>
         <h1>Hangman</h1>
         <img src={this.props.images[this.state.nWrong]} alt={altText} />
-        <p>Guessed Wrong: {this.state.nWrong}</p>
+        <p>Wrong Guesses: {this.state.nWrong}</p>
         <p className='Hangman-word'>
           {!gameOver ? this.guessedWord() : this.state.answer}
         </p>
         <p className='Hangman-btns'>{gameState}</p>
         <button id='reset' onClick={this.reset}>
-          Restart?
+          Restart
         </button>
       </div>
     );
